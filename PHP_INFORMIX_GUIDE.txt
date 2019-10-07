@@ -1,0 +1,77 @@
+INSTALL APACHE
+apt-get install apache2
+
+INSTALL PHP
+apt-get install php libapache2-mod-php php-dev
+
+INSTALL FTP SERVER
+sudo apt install vsftpd
+
+INSTALL INFORMIX DRIVER
+Use ftp client to upload ibm.csdk.4.50.FC2.LNX.tar to client
+Command: mkdir /informix
+Command: mv ibm.csdk.4.50.FC2.LNX.tar /informix
+Command: cd /informix
+Command: tarx -xpf ibm.csdk.4.50.FC2.LNX.tar
+Command: ./installclientsdk
+         Accept all the defaults. This will install Informix in /opt/IBM/Informix-Client-SDK
+When it is done, you will be back at the command line. 
+
+SET INFORMIXDIR
+Command: export INFORMIXDIR=/opt/IBM/informix/
+Command: echo $INFORMIXDIR
+                    /opt/IBM/informix
+
+DOWNLOAD PDO_INFORMIX DRIVER 
+https://pecl.php.net/get/PDO_INFORMIX-1.3.3.tgz
+
+UPLOAD FILE TO SERVER
+use ftp client to upload the file to the server
+Command: mkdir /informix_pdo
+Move or copy the file into /informix_pdo
+
+INSTALL PDO_INFORMIX
+Command: cd /informix_pdo
+Command: tar -xpf PDO_INFORMIX-1.3.1.tgz
+Command: cd PDO_INFORMIX-1.3.3
+Command: phpize
+CHANGE php_pdo_driver.h LOCATION
+Command: find /usr | grep php_pdo_driver
+         /usr/include/php/20170718/ext/pdo/php_pdo_driver.h
+Command: nano /informix_pdo/PDO_INFORMIX-1.3.3/configure
+CTRL-W (brings up the search box)
+Type: php_pdo_driver 
+Hit ENTER key (this will take you to the line you need to change.
+You will see a section of if/elif/else
+Add these two lines after the last elfi and before the else:
+
+     elfi test -f /usr/include/php/20170718/ext/pdo/php_pdo_driver.h; then
+     pdo_inc_path=/usr/include/php/20170718/ext
+CTRL-X to exit
+Y to save
+Hit ENTER key to accept default save name. 
+Command: ./configure
+Command: make
+    "Libraries have been installed in: /informix_pdo/PDO_INFORMIX-1.3.3/modules"
+Command: make install
+    "Installing shared extensions: /usr/lib/php/20170718/"
+
+ADD TO .INI FILE
+Command: cd /etc/php/7.2/apache2/conf.d
+Command: nano pdo_informix.ini
+Type: extension=/usr/lib/php/20170718/pdo_informix.so
+CTRL-X to exit
+Y to save
+ENTER to save to default name
+
+EDIT PHP.INI FILE
+Command: nano /etc/php/7.2/apache2/php.ini
+Uncomment or add line: extension=pdo_informix
+CTRL-X to exit
+Y to save
+ENTER to save to default name
+
+RESTART APACHE
+Command: service apache2 restart
+CHECK THAT INFORMIX PDO IS LOADED
+Command: php -m
