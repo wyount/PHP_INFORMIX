@@ -1,0 +1,181 @@
+Preparing to install...
+Extracting the JRE from the installer archive...
+Unpacking the JRE...
+Extracting the installation resources from the installer archive...
+Configuring the installer for this system's environment...
+
+Launching installer...
+
+===============================================================================
+IBM Informix ClientSDK 3.70                      (created with InstallAnywhere)
+-------------------------------------------------------------------------------
+
+Preparing CONSOLE Mode Installation...
+
+
+
+
+===============================================================================
+Introduction
+------------
+
+InstallAnywhere will guide you through the installation of IBM Informix Client 
+SDK 3.70.FC8.
+
+Copyright IBM Corporation 1996, 2014. All rights reserved.
+
+It is strongly recommended that you quit all programs before continuing with 
+this installation.
+
+Respond to each prompt to proceed to the next step in the installation.  If you
+want to change something on a previous step, type 'back'.
+
+You may cancel this installation at any time by typing 'quit'.
+
+
+PRESS <ENTER> TO CONTINUE: 
+
+
+===============================================================================
+
+
+ 
+ 
+    International License Agreement for Non-Warranted Programs
+    
+    Part 1 - General Terms
+    
+    BY DOWNLOADING, INSTALLING, COPYING, ACCESSING, CLICKING ON AN
+    "ACCEPT" BUTTON, OR OTHERWISE USING THE PROGRAM, LICENSEE AGREES TO
+    THE TERMS OF THIS AGREEMENT. IF YOU ARE ACCEPTING THESE TERMS ON
+    BEHALF OF LICENSEE, YOU REPRESENT AND WARRANT THAT YOU HAVE FULL
+    AUTHORITY TO BIND LICENSEE TO THESE TERMS. IF YOU DO NOT AGREE TO
+    THESE TERMS,
+    
+    * DO NOT DOWNLOAD, INSTALL, COPY, ACCESS, CLICK ON AN "ACCEPT" BUTTON,
+    OR USE THE PROGRAM; AND
+    
+    * PROMPTLY RETURN THE UNUSED MEDIA AND DOCUMENTATION TO THE PARTY FROM
+    WHOM IT WAS OBTAINED FOR A REFUND OF THE AMOUNT PAID. IF THE PROGRAM
+    WAS DOWNLOADED, DESTROY ALL COPIES OF THE PROGRAM.
+    
+    1. Definitions
+ 
+Press Enter to continue viewing the license agreement, or enter "1" to 
+   accept the agreement, "2" to decline it, "3" to print it, or "99" to go back
+   to the previous screen.:  
+
+
+
+===============================================================================
+Installation Location
+---------------------
+
+Where Would You Like to Install IBM Informix Client SDK 3.70.FC8?
+
+  Default Install Folder: /opt/IBM/informix
+
+ENTER AN ABSOLUTE PATH, OR PRESS <ENTER> TO ACCEPT THE DEFAULT
+      : 
+
+
+===============================================================================
+Installation Features
+---------------------
+
+
+
+
+===============================================================================
+Choose Product Features
+-----------------------
+
+ENTER A COMMA_SEPARATED LIST OF NUMBERS REPRESENTING THE FEATURES YOU WOULD 
+LIKE TO SELECT, OR DESELECT. TO VIEW A FEATURE'S DESCRIPTION, ENTER 
+'?<NUMBER>'.  PRESS <RETURN> WHEN YOU ARE DONE:
+
+    1- [X] IBM Informix Client SDK
+    2-  |-[X] IBM Informix Object Interface for C++
+    3-     |-[X] IBM Informix Object Interface for C++ Demos
+    4-  |-[X] IBM Informix ESQL/C
+    5-     |-[X] IBM Informix ESQL/C Demos
+    6-     |-[X] 7.2 Application Compatibility Module
+    7-  |-[X] IBM Informix LIBDMI for Client Applications
+    8-  |-[X] IBM Informix ODBC Driver
+    9-     |-[X] IBM Informix ODBC Driver Demos
+   10-  |-[X] IBM Informix Common Database Utilities
+   11- [X] Global Language Support (GLS)
+   12-  |-[X] West European and Americas
+   13-  |-[X] East European and Cyrillic
+   14-  |-[X] Chinese
+   15-  |-[X] Japanese
+   16-  |-[X] Korean
+   17-  |-[X] Thai
+   18- [ ] IBM Informix OpenAdmin Tool
+   19-  |-[ ] IBM Informix Replication Plug-in for OpenAdmin Tool
+   20-  |-[ ] IBM Informix Schema Manager Plug-in for OpenAdmin Tool
+   21-  |-[ ] IBM Informix TimeSeries Plug-in for OpenAdmin Tool
+   22-  |-[ ] IBM Informix Health Advisor Plug-in for OpenAdmin Tool
+
+Please choose the Features to be installed by this installer.: 
+
+
+===============================================================================
+Installation Summary
+--------------------
+
+Type 'back' to go to the previous step or 'quit' to cancel the installation. 
+Please review the following before continuing:
+
+Product Name:
+    IBM Informix Client SDK
+
+Install Folder:
+    /opt/IBM/informix
+
+Product Features:
+    IBM Informix Client SDK,
+    IBM Informix Object Interface for C++,
+    IBM Informix Object Interface for C++ Demos,
+    IBM Informix ESQL/C,
+    IBM Informix ESQL/C Demos,
+    7.2 Application Compatibility Module,
+    IBM Informix LIBDMI for Client Applications,
+    IBM Informix ODBC Driver,
+    IBM Informix ODBC Driver Demos,
+    IBM Informix Common Database Utilities,
+    Global Language Support (GLS),
+    West European and Americas,
+    East European and Cyrillic,
+    Chinese,
+    Japanese,
+    Korean,
+    Thai
+
+Disk Space Information (for Installation Target): 
+    Required:  234,199,926 Bytes
+    Available: 12,655,198,208 Bytes
+
+PRESS <ENTER> TO CONTINUE: 
+
+
+===============================================================================
+Installing...
+-------------
+
+ [==================|==================|==================|==================]
+ [------------------|------------------|------------------|------------------]
+
+
+
+===============================================================================
+Installation Complete
+---------------------
+
+Congratulations. IBM Informix Client SDK 3.70.FC8 has been successfully 
+installed to:
+
+/opt/IBM/informix
+
+
+PRESS <ENTER> TO EXIT THE INSTALLER: 
