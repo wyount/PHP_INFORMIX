@@ -1,60 +1,71 @@
+apt-get update
+apt-get dist-upgrade
+
 INSTALL APACHE
 apt-get install apache2
 
 INSTALL PHP
 apt-get install php libapache2-mod-php php-dev
 
-INSTALL FTP SERVER
-sudo apt install vsftpd
+INSTALL PEAR
+apt-get install php-pear
+
+INSTALL VSFTPD
+Apt install vsftpd
 
 INSTALL INFORMIX DRIVER
-Use ftp client to upload ibm.csdk.4.50.FC2.LNX.tar to client
+use ftp client to upload clientsdk.3.70.FC8DE.LINUX.tar to client
 Command: mkdir /informix
-Command: mv ibm.csdk.4.50.FC2.LNX.tar /informix
+Command: mv clientsdk.3.70.FC8DE.LINUX.tar /informix
 Command: cd /informix
-Command: tarx -xpf ibm.csdk.4.50.FC2.LNX.tar
+Command: tarx -xpf clientsdk.3.70.FC8DE.LINUX.tar
 Command: ./installclientsdk
-         Accept all the defaults. This will install Informix in /opt/IBM/Informix-Client-SDK
-When it is done, you will be back at the command line. 
+
+Accept all the defaults. This will install Informix in /opt/IBM/Informix-Client-SDK
+When it is done, you will be back at the command line.
 
 SET INFORMIXDIR
 Command: export INFORMIXDIR=/opt/IBM/informix/
-Command: echo $INFORMIXDIR
-                    /opt/IBM/informix
 
-DOWNLOAD PDO_INFORMIX DRIVER 
-https://pecl.php.net/get/PDO_INFORMIX-1.3.3.tgz
-
-UPLOAD FILE TO SERVER
-use ftp client to upload the file to the server
+DOWNLOAD INFORMIX PDO
 Command: mkdir /informix_pdo
-Move or copy the file into /informix_pdo
-
-INSTALL PDO_INFORMIX
 Command: cd /informix_pdo
+Command: wget https://pecl.php.net/get/PDO_INFORMIX-1.3.1.tgz
 Command: tar -xpf PDO_INFORMIX-1.3.1.tgz
 Command: cd PDO_INFORMIX-1.3.3
 Command: phpize
+
 CHANGE php_pdo_driver.h LOCATION
 Command: find /usr | grep php_pdo_driver
+
          /usr/include/php/20170718/ext/pdo/php_pdo_driver.h
+
+         /usr/include/php7/ext/pdo/php_pdo_driver.h
+
 Command: nano /informix_pdo/PDO_INFORMIX-1.3.3/configure
 CTRL-W (brings up the search box)
-Type: php_pdo_driver 
+Type: php_pdo_driver
 Hit ENTER key (this will take you to the line you need to change.
 You will see a section of if/elif/else
 Add these two lines after the last elfi and before the else:
 
      elfi test -f /usr/include/php/20170718/ext/pdo/php_pdo_driver.h; then
+
      pdo_inc_path=/usr/include/php/20170718/ext
+
+ 
+
 CTRL-X to exit
 Y to save
-Hit ENTER key to accept default save name. 
-Command: ./configure
+Hit ENTER key to accept default save name.
+Command: ./configure --with-pdo-informix=/opt/IBM/informix
 Command: make
-    "Libraries have been installed in: /informix_pdo/PDO_INFORMIX-1.3.3/modules"
+
+    "Libraries have been install in: /informix_pdo/PDO_INFORMIX-1.3.3/modules"
+
 Command: make install
-    "Installing shared extensions: /usr/lib/php/20170718/"
+
+    "Installing shared extensions: /usr/lib/php/20170718/
 
 ADD TO .INI FILE
 Command: cd /etc/php/7.2/apache2/conf.d
@@ -64,14 +75,15 @@ CTRL-X to exit
 Y to save
 ENTER to save to default name
 
-EDIT PHP.INI FILE
-Command: nano /etc/php/7.2/apache2/php.ini
-Uncomment or add line: extension=pdo_informix
-CTRL-X to exit
-Y to save
-ENTER to save to default name
+CREATE SYMLINK TO PDO_INFORMIX.INI
+Command: ln -s /etc/php/7.2/mods-available/informix.ini /etc/php/7.2/apache2/conf.d/10-informix.ini
+Command: ln -s /etc/php/7.2/mods-available/informix.ini /etc/php/7.2/cli/conf.d/10-informix.ini
+
+Command: cp /opt/IBM/informix/lib/esql/libifgls.so /lib/x86-64-linux-gnu/
+Command: cp /opt/IBM/informix/lib/esql/libifglx.so /lib/x86-64-linux-gnu/
 
 RESTART APACHE
 Command: service apache2 restart
+
 CHECK THAT INFORMIX PDO IS LOADED
 Command: php -m
