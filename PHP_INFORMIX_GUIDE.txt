@@ -15,9 +15,9 @@ Apt install vsftpd
 
 INSTALL INFORMIX DRIVER
 use ftp client to upload clientsdk.3.70.FC8DE.LINUX.tar to client
-Command: mkdir /informix
-Command: mv clientsdk.3.70.FC8DE.LINUX.tar /informix
-Command: cd /informix
+Command: mkdir /informix_sdk
+Command: mv clientsdk.3.70.FC8DE.LINUX.tar /informix_sdk
+Command: cd /informix_sdk
 Command: tarx -xpf clientsdk.3.70.FC8DE.LINUX.tar
 Command: ./installclientsdk
 
@@ -25,7 +25,7 @@ Accept all the defaults. This will install Informix in /opt/IBM/Informix-Client-
 When it is done, you will be back at the command line.
 
 SET INFORMIXDIR
-Command: export INFORMIXDIR=/opt/IBM/informix/
+Command: export INFORMIXDIR=/opt/IBM/informix_sdk/
 
 DOWNLOAD INFORMIX PDO
 Command: mkdir /informix_pdo
